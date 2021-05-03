@@ -1,0 +1,45 @@
+<!--VIEW DE EDICAO DE CATEGORIAS-->
+
+<%- include('../../partials/header.ejs') %>
+
+    <body>
+        <header>
+            <%- include('../../partials/navbar.ejs') %>
+        </header>
+
+
+        <div class="container">
+
+            <hr>
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2 class="text-center mb-3">Edição de categoria</h2>
+                </div>
+
+                <div class="card-body">
+
+                    <form action="/categories/update" method="POST">
+
+                        <input type="text" class="form-control mb-3" name="title" value="<%= categorie.title %>">
+
+                        <input type="hidden" name="id" value="<%= categorie.id %>">
+
+                        <button class="btn btn-success">Atualizar</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    <footer>
+        <%- include('../../partials/footer.ejs') %>
+    </footer>
+
+
+    </html>

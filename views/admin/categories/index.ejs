@@ -1,0 +1,99 @@
+<%- include('../../partials/header.ejs') %>
+
+    <body>
+
+        <header>
+            <%- include('../../partials/navbar.ejs') %>
+        </header>
+
+        <div class="container">
+            <div class="col">
+                <hr>
+                <h2 class="text-center mb-3">Categorias</h2>
+                <a class="btn btn-warning btn-block" href="/admin/categories/new">Criar nova categoria</a>
+                <hr>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Título
+                            </th>
+                            <th>
+                                Slug
+                            </th>
+                            <th>
+                                Ações
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <% categories.forEach((categorie)=> { %>
+
+
+                            <tr>
+                                <td>
+                                    <%= categorie.id %>
+                                </td>
+                                <td>
+                                    <%= categorie.title %>
+                                </td>
+                                <td>
+                                    <%= categorie.slug %>
+                                </td>
+                                <td>
+                                    <div class="col text-center">
+                                        <a class="btn btn-outline-secondary mr-3"
+                                            href="/admin/categories/edit/<%= categorie.id %>">Editar</a>
+
+
+                                        <form action="/categories/delete" method="POST" style="display: inline;"
+                                            onsubmit="confirmaDelete(event, this)">
+                                            <input type="hidden" name="id" value="<%= categorie.id %>">
+                                            <button class="btn btn-outline-danger">Excluir</button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+
+
+                            <% }); %>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </body>
+
+    <footer>
+        <%- include('../../partials/footer.ejs') %>
+    </footer>
+
+    </html>
+
+
+
+    <script>
+        //Evita que usuário delete dado por engano, parametro FORM vem do evento que chamou o script (passando como THIS)
+        function confirmaDelete(event, form) {
+            //Evita envio do formulário
+            event.preventDefault();
+
+            //Gera janela de popup para confirmar envio ou não
+            var decision = confirm("Deseja excluir a categoria?");
+
+            //Se confirmar DECISION form.submit envio formulário
+            if (decision) {
+                form.submit();
+            };
+        };
+
+    </script>

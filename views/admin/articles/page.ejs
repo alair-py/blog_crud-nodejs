@@ -1,0 +1,77 @@
+<%- include('../../partials/header.ejs') %>
+
+
+    <body>
+        <header>
+            <%- include('../../partials/home-navbar.ejs') %>
+        </header>
+
+
+        <div class="container">
+
+            <div class="row">
+                <div class="card-deck">
+
+                    <% result.articles.rows.forEach((article)=> { %>
+
+
+                        <div class="col-sm-6">
+                            <div class="card text-center text-dark bg-light m-2"
+                                style="min-width: 350px; min-height: 180px;">
+                                <div class="card-body">
+                                    <h5 class="card-title bg-secondary text-light p-1">
+                                        <%= article.title %>
+                                    </h5>
+                                    <p class="card-text">Leia este artigo sobre <%= article.title %>
+                                    </p>
+                                    <a href="/<%= article.slug %>" class="btn btn-outline-secondary mt-2">Visitar</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <% }); %>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col">
+
+
+                <% if(result.page> 2) { %>
+                    <div class="row m-5" style="float: left">
+                        <a class="btn btn-warning" href="/articles/page/<%= result.page - 1 %>">
+                            <<< Anterior</a>
+                    </div>
+                    <% } else if (result.page==2) { %>
+                        <div class="row m-5" style="float: left">
+                            <a class="btn btn-warning" href="/">
+                                <<< Anterior</a>
+                        </div>
+
+                        <% } %>
+
+
+
+                            <div class="row m-5" style="float: right">
+
+                                <% if(result.next) { %>
+                                    <a class="btn btn-warning" href="/articles/page/<%= result.page + 1 %>">Próximo
+                                        >>></a>
+                                    <% }; %>
+
+                            </div>
+            </div>
+        </div>
+
+
+    </body>
+
+    <footer>
+        <%- include('../../partials/footer.ejs') %>
+    </footer>
+
+    </html>

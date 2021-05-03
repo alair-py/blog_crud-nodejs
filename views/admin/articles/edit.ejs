@@ -1,0 +1,90 @@
+<!--VIEW DE EDICAO DE ARTIGOS-->
+
+<%- include('../../partials/header.ejs') %>
+
+    <body>
+        <header>
+            <%- include('../../partials/navbar.ejs') %>
+        </header>
+
+
+        <div class="container">
+
+            <hr>
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2 class="text-center">Edição de artigo</h2>
+                </div>
+
+                <div class="card-body">
+
+                    <form action="/articles/update" method="POST">
+                        <label>
+                            <h4>Titulo:</h4>
+                        </label>
+                        <input type="text" class="form-control mb-5" name="title" value="<%= article.title %>">
+
+                        <input type="hidden" name="id" value="<%= article.id %>">
+
+                        <textarea id="article" name="body" class="form-control mb-5"><%- article.body %></textarea>
+
+                        <br>
+
+                        <label>
+                            <h4>Categoria:</h4>
+                        </label>
+
+                        <select class="form-control mb-5" name="categorie">
+                            <% categories.forEach((categorie)=> { %>
+
+                                <% if (categorie.id==article.categoryId) { %>
+                                    <option value="<%= categorie.id %>" selected>
+                                        <%= categorie.title %>
+                                    </option>
+                                    <% } else { %>
+                                        <option value="<%= categorie.id %>">
+                                            <%= categorie.title %>
+                                        </option>
+                                        <% }; %>
+
+                                            <% }); %>
+
+                        </select>
+
+                        <button class="btn btn-warning btn-block">Atualizar</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    <footer>
+        <%- include('../../partials/footer.ejs') %>
+    </footer>
+
+
+    </html>
+
+
+
+
+
+    <script src="/tinymce/js/tinymce/tinymce.min.js"></script>
+
+
+    <script>
+
+        tinymce.init({
+            selector: "#article",
+            plugins: [
+                'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+            ]
+        });
+
+    </script>
