@@ -13,61 +13,64 @@
                 <a class="btn btn-success btn-block" href="/admin/categories/new">Criar nova categoria</a>
                 <hr>
 
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Título
-                            </th>
-                            <th>
-                                Slug
-                            </th>
-                            <th>
-                                Ações
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        <% categories.forEach((categorie)=> { %>
-
-
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td>
-                                    <%= categorie.id %>
-                                </td>
-                                <td>
-                                    <%= categorie.title %>
-                                </td>
-                                <td>
-                                    <%= categorie.slug %>
-                                </td>
-                                <td>
-                                    <div class="col text-center">
-                                        <a class="btn btn-outline-secondary mr-3 btn-sm"
-                                            href="/admin/categories/edit/<%= categorie.id %>">Editar</a>
-
-
-                                        <form action="/categories/delete" method="POST" style="display: inline;"
-                                            onsubmit="confirmaDelete(event, this)">
-                                            <input type="hidden" name="id" value="<%= categorie.id %>">
-                                            <button class="btn btn-outline-danger btn-sm">Excluir</button>
-                                        </form>
-                                    </div>
-
-                                </td>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Título
+                                </th>
+                                <th>
+                                    Slug
+                                </th>
+                                <th>
+                                    Ações
+                                </th>
                             </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <% categories.forEach((categorie)=> { %>
 
 
-                            <% }); %>
+                                <tr>
+                                    <td>
+                                        <%= categorie.id %>
+                                    </td>
+                                    <td>
+                                        <%= categorie.title %>
+                                    </td>
+                                    <td>
+                                        <%= categorie.slug %>
+                                    </td>
+                                    <td>
+                                        <div class="col text-center">
+                                            <a class="btn btn-outline-secondary m-1 btn-sm"
+                                                href="/admin/categories/edit/<%= categorie.id %>">Editar</a>
 
-                    </tbody>
 
-                </table>
+                                            <form action="/categories/delete" method="POST" style="display: inline;"
+                                                onsubmit="confirmaDelete(event, this)">
+                                                <input type="hidden" name="id" value="<%= categorie.id %>">
+                                                <button class="btn btn-outline-danger btn-sm m-1">Excluir</button>
+                                            </form>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+
+                                <% }); %>
+
+                        </tbody>
+
+                    </table>
+                </div>
+
             </div>
         </div>
 

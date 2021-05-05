@@ -15,8 +15,7 @@
 
 
                     <div class="col-12">
-                        <div class="card text-center text-dark bg-light m-2"
-                            style="min-width: 350px; min-height: 180px;">
+                        <div class="card text-center text-dark bg-light m-1">
                             <div class="card-body">
                                 <h5 class="card-title bg-primary text-light p-1">
                                     <%= article.title %>
@@ -39,28 +38,31 @@
 
 
                 <% if(result.page> 2) { %>
-                    <div class="row m-5" style="float: left">
-                        <a class="btn btn-primary" href="/articles/page/<%= result.page - 1 %>">
+                    <div class="row m-3" style="float: left">
+                        <a class="btn btn-primary btn-sm" href="/articles/page/<%= result.page - 1 %>">
                             <<< Anterior</a>
                     </div>
-                    <% } else if (result.page==2) { %>
-                        <div class="row m-5" style="float: left">
-                            <a class="btn btn-primary" href="/">
-                                <<< Anterior</a>
-                        </div>
 
-                        <% } %>
-
-
-
-                            <div class="row m-5" style="float: right">
-
-                                <% if(result.next) { %>
-                                    <a class="btn btn-primary" href="/articles/page/<%= result.page + 1 %>">Próximo
-                                        >>></a>
-                                    <% }; %>
-
+                    <div class="col">
+                        <% } else if (result.page==2) { %>
+                            <div class="row m-3" style="float: left">
+                                <a class="btn btn-primary btn-sm" href="/">
+                                    <<< Anterior</a>
                             </div>
+
+                            <% } %>
+
+                                <div class="row m-3" style="float: right">
+
+                                    <% if(result.next) { %>
+                                        <a class="btn btn-primary btn-sm"
+                                            href="/articles/page/<%= result.page + 1 %>">Próximo
+                                            >>></a>
+                                        <% }; %>
+
+                                </div>
+                    </div>
+
             </div>
         </div>
 
