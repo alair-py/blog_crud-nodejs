@@ -19,41 +19,37 @@
             </div>
 
 
+
             <div class="col">
 
-                <div class="row">
-                    <div class="card-deck">
+                <div class="card">
 
-                        <% articles.forEach((article)=> { %>
+                    <% articles.forEach((article)=> { %>
 
 
-                            <div class="col-sm-6">
-                                <div class="card text-center text-dark bg-light m-2"
-                                    style="min-width: 350px; min-height: 180px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title bg-secondary text-light p-1">
-                                            <%= article.title %>
-                                        </h5>
-                                        <p class="card-text">Leia este artigo sobre <%= article.title %>
-                                        </p>
-                                        <a href="/<%= article.slug %>"
-                                            class="btn btn-outline-secondary mt-2">Visitar</a>
-                                    </div>
+                        <div class="">
+                            <div class="card text-center text-dark bg-light m-2">
+                                <div class="card-body">
+                                    <h5 class="card-title bg-primary text-light p-1">
+                                        <%= article.title %>
+                                    </h5>
+                                    <p class="card-text">Leia este artigo sobre <%= article.title %>
+                                    </p>
+                                    <a href="/<%= article.slug %>" class="btn btn-outline-primary mt-2">Visitar</a>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <% }); %>
-
-                    </div>
-
+                        <% }); %>
                 </div>
+
             </div>
 
 
             <div class="col">
                 <div class="row m-5" style="float: right">
-                    <a class="btn btn-warning" href="/articles/page/2">Próximo >>></a>
+                    <a class="btn btn-primary" href="/articles/page/2">Próximo >>></a>
                 </div>
             </div>
         </div>

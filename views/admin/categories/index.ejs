@@ -10,7 +10,7 @@
             <div class="col">
                 <hr>
                 <h2 class="text-center mb-3">Categorias</h2>
-                <a class="btn btn-warning btn-block" href="/admin/categories/new">Criar nova categoria</a>
+                <a class="btn btn-success btn-block" href="/admin/categories/new">Criar nova categoria</a>
                 <hr>
 
                 <table class="table table-bordered">
@@ -48,14 +48,14 @@
                                 </td>
                                 <td>
                                     <div class="col text-center">
-                                        <a class="btn btn-outline-secondary mr-3"
+                                        <a class="btn btn-outline-secondary mr-3 btn-sm"
                                             href="/admin/categories/edit/<%= categorie.id %>">Editar</a>
 
 
                                         <form action="/categories/delete" method="POST" style="display: inline;"
                                             onsubmit="confirmaDelete(event, this)">
                                             <input type="hidden" name="id" value="<%= categorie.id %>">
-                                            <button class="btn btn-outline-danger">Excluir</button>
+                                            <button class="btn btn-outline-danger btn-sm">Excluir</button>
                                         </form>
                                     </div>
 
